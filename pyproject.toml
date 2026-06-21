@@ -20,9 +20,10 @@ dev = [
     "playwright",
     "httpx>=0.27",
     # Builds the app's Dockerfile, runs it under podman with the mounts/env its
-    # openhost.toml declares, and fronts it with a mock router that injects owner
-    # auth. Tests hit a real, containerized app. Requires podman on the host.
-    "openhost-test-harness @ git+https://github.com/imbue-openhost/openhost-app-test-harness@main",
+    # openhost.toml declares, and fronts it with the real OpenHost router (real
+    # subdomain routing and cookie auth). Tests hit a real, containerized app.
+    # Requires podman on the host.
+    "openhost[test-harness] @ git+https://github.com/imbue-openhost/openhost@main",
 ]
 
 [build-system]

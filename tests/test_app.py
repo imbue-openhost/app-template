@@ -11,5 +11,6 @@ def test_health_endpoint(stack: OpenhostStack) -> None:
 
 
 def test_home_page_renders(stack: OpenhostStack, page: Page) -> None:
+    stack.playwright_login(page)
     page.goto(stack.url)
     expect(page.get_by_role("heading", name="app-template")).to_be_visible()
