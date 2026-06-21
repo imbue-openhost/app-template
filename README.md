@@ -22,6 +22,9 @@ just check   # lint, format, typecheck
 Python work uses [uv](https://docs.astral.sh/uv/). Use `uv add <pkg>` to add a
 dependency and `uv add --group dev <pkg>` for a dev-only one.
 
-`just test` uses `openhost-test-harness`, which builds the Dockerfile and runs
-the app under **podman** (so podman must be running on the host) fronted by a
-mock OpenHost router. See `tests/` for the `stack` fixture.
+`just test` uses the OpenHost test harness (the `openhost[test-harness]` package),
+which builds the Dockerfile and runs the app under **podman** (so podman must be
+running on the host) fronted by the real OpenHost router. `stack.url` requires
+owner auth (use `stack.owner_session` for requests, or `stack.playwright_login(page)`
+for browser tests); `stack.app_url` hits the container directly. See `tests/` for the
+`stack` fixture.

@@ -3,7 +3,7 @@
 - use uv for all python work (`uv run ...`, `uv add ...`, `uv sync`).
 - this is an OpenHost app. `openhost.toml` is the app manifest.
 - the app is a litestar/hypercorn backend that serves on port 8080 and exposes a `/health` endpoint. see "deploying & debugging on openhost" below.
-- tests use `openhost-test-harness`: each run builds the Dockerfile, runs the app under podman per `openhost.toml`, and fronts it with a mock router. so `just test` requires podman running on the host. `stack.url` goes through the router (owner auth injected); `stack.app_url` hits the container directly.
+- tests use the OpenHost test harness (the `openhost[test-harness]` package, imported as `openhost_test_harness`): each run builds the Dockerfile, runs the app under podman per `openhost.toml`, and fronts it with the real OpenHost router. so `just test` requires podman running on the host. `stack.url` goes through the router and requires owner auth (use `stack.owner_session` for requests, or `stack.playwright_login(page)` for browser tests); `stack.app_url` hits the container directly.
 
 ## deploying & debugging on openhost
 
