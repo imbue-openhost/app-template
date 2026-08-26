@@ -15,7 +15,7 @@ health_check = "/health"
 
 [resources]
 memory_mb = 256
-cpu_cores = .5
+cpu_cores = 0.5
 
 [data]
 # Named sqlite databases provisioned + persisted by OpenHost.
